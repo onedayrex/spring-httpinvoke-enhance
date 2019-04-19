@@ -50,6 +50,7 @@ public class ClassPathInvokeServiceScanner extends ClassPathBeanDefinitionScanne
                 beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
                 beanDefinition.setPropertyValues(new MutablePropertyValues(propertyValueList));
                 BeanDefinitionHolder realholder = new BeanDefinitionHolder(definition, beanName);
+                super.getRegistry().removeBeanDefinition(beanDefinitionHolder.getBeanName());
                 realHolders.add(realholder);
             }
         }
