@@ -28,13 +28,13 @@ public class InvokeServicePost implements ImportBeanDefinitionRegistrar {
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         Map<String, Object> annotationAttributes = importingClassMetadata.getAnnotationAttributes(ANNOTATION_NAME);
         String basePackage = (String) annotationAttributes.get("basePackage");
-        ClassPathInvokeScanner scanner = new ClassPathInvokeScanner(registry);
+        ClassPathInvokeServiceScanner scanner = new ClassPathInvokeServiceScanner(registry);
         scanner.addIncludeFilter(new AnnotationTypeFilter(InvokeService.class));
         Set<BeanDefinitionHolder> beanDefinitionHolders = scanner.doScan(basePackage);
         if (!beanDefinitionHolders.isEmpty()) {
             for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
-                log.info("regist invoke service→[{}]", beanDefinitionHolder.getBeanName());
                 registry.registerBeanDefinition(beanDefinitionHolder.getBeanName(), beanDefinitionHolder.getBeanDefinition());
+                log.info("regist invoke service→[{}]", beanDefinitionHolder.getBeanName());
             }
         }
     }

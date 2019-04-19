@@ -15,9 +15,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ClassPathInvokeScanner extends ClassPathBeanDefinitionScanner {
+public class ClassPathInvokeServiceScanner extends ClassPathBeanDefinitionScanner {
 
-    public ClassPathInvokeScanner(BeanDefinitionRegistry registry) {
+    public ClassPathInvokeServiceScanner(BeanDefinitionRegistry registry) {
         super(registry,false);
     }
 
@@ -44,7 +44,7 @@ public class ClassPathInvokeScanner extends ClassPathBeanDefinitionScanner {
                 List<PropertyValue> propertyValueList = new ArrayList<>();
                 propertyValueList.add(new PropertyValue("service", beanClass));
                 propertyValueList.add(new PropertyValue("serviceInterface", anInterface));
-                String beanName = "/" + anInterface.getSimpleName();
+                String beanName = "/invokeRemote/" + anInterface.getSimpleName();
                 GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
                 beanDefinition.setBeanClass(HttpInvokerServiceExporter.class);
                 beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
