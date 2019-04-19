@@ -1,6 +1,6 @@
 package com.git.onedayrex.springhttpinvokeenhance.service;
 
-import com.git.onedayrex.springhttpinvokeenhance.common.annotation.InvokeService;
+import com.git.onedayrex.springhttpinvokeenhance.annotation.InvokeService;
 import org.springframework.stereotype.Service;
 
 @Service
